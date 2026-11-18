@@ -45,6 +45,14 @@ export interface Order {
   quantity: number;
 }
 
+/** One stock movement from the history. Only date, type, product and quantity are kept. */
+export interface Movement {
+  date: string; // ISO date
+  type: "customer_dispatch" | "production_issue" | "production_receipt" | "supplier_receipt";
+  sku: string;
+  quantity: number;
+}
+
 /** The sanitised store data the whole app plans from. */
 export interface StoreData {
   bins: Bin[];

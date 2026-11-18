@@ -16,6 +16,7 @@ import { ingestOrders } from "./ingest-orders";
 import type {
   Bin,
   IncomingLine,
+  Movement,
   Product,
   SizeClass,
   StockRow,
@@ -65,18 +66,20 @@ const POLICY: Record<string, Record<string, Decision>> = {
     quantity: { keep: true, why: "Units to place." },
   },
   "movements.csv": {
-    movement_id: { keep: false, why: "File not used in the MVP." },
-    date: { keep: false, why: "File not used in the MVP (history only feeds the stretch goals)." },
-    type: { keep: false, why: "File not used in the MVP." },
-    sku: { keep: false, why: "File not used in the MVP." },
-    quantity: { keep: false, why: "File not used in the MVP." },
-    from_bin: { keep: false, why: "File not used in the MVP." },
-    to_bin: { keep: false, why: "File not used in the MVP." },
-    reference: { keep: false, why: "File not used in the MVP." },
+    movement_id: { keep: false, why: "Row identifier; not needed." },
+    date: { keep: true, why: "Counts days of history for run-out cover (stretch view)." },
+    type: { keep: true, why: "Separates outbound (dispatch, production issue) from receipts." },
+    sku: { keep: true, why: "Which product moved." },
+    quantity: { keep: true, why: "Units moved; feeds average daily use." },
+    from_bin: { keep: false, why: "Not needed: the views use product totals, not bin history." },
+    to_bin: { keep: false, why: "Not needed: the views use product totals, not bin history." },
+    reference: { keep: false, why: "Order or work-order number; not needed." },
     picked_by: { keep: false, why: "Staff name; personal data and not needed." },
     picker_personal_mobile: { keep: false, why: "Personal mobile number; never needed." },
   },
 };
+
+const MOVEMENT_TYPES: Movement["type"][] = ["customer_dispatch", "production_issue", "production_receipt", "supplier_receipt"];
 
 const SIZES: SizeClass[] = ["Small", "Medium", "Large", "Bulk"];
 
@@ -142,9 +145,10 @@ function main() {
     quantity: units(r.quantity, `incoming ${r.reference}`),
   }));
 
-  // Movements are validated against the policy (so unknown columns still stop the run)
-  // but nothing from them is written.
-  const movements = readRaw("movements.csv");
+  const movements: Movement[] = readRaw("movements.csv").rows.map((r) => {
+    if (!MOVEMENT_TYPES.includes(r.type as Movement["type"])) throw new Error(`Bad movement type "${r.type}" in ${r.movement_id}`);
+    return { date: r.date, type: r.type as Movement["type"], sku: r.sku, quantity: units(r.quantity, `movement ${r.movement_id}`) };
+  });
 
   const write = (name: string, data: unknown) =>
     writeFileSync(path.join(OUT, name), JSON.stringify(data, null, 2) + "\n");
@@ -152,13 +156,14 @@ function main() {
   write("products.json", products);
   write("stock.json", stock);
   write("incoming.json", incoming);
+  write("movements.json", movements);
 
   const orders = ingestOrders();
 
-  writeDoc({ "warehouse_extra_orders.csv": orders.length, "bins.csv": bins.length, "products.csv": products.length, "stock.csv": stock.length, "incoming.csv": incoming.length, "movements.csv": movements.rows.length });
+  writeDoc({ "warehouse_extra_orders.csv": orders.length, "bins.csv": bins.length, "products.csv": products.length, "stock.csv": stock.length, "incoming.csv": incoming.length, "movements.csv": movements.length });
 
   console.log(
-    `Wrote fixtures/: ${bins.length} bins, ${products.length} products, ${stock.length} stock rows, ${incoming.length} incoming lines. Movements (${movements.rows.length} rows) not used.`,
+    `Wrote fixtures/: ${bins.length} bins, ${products.length} products, ${stock.length} stock rows, ${incoming.length} incoming lines. ${movements.length} movements (date, type, sku, quantity only).`,
   );
 }
 

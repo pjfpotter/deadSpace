@@ -10,6 +10,9 @@ const LINKS: { href: string; label: string }[] = [
   { href: "/putaway", label: "Deliveries" },
   { href: "/fit", label: "Can we fit it?" },
   { href: "/december", label: "December orders" },
+  { href: "/run-out", label: "Running low" },
+  { href: "/slotting", label: "Fast movers" },
+  { href: "/real-space", label: "Real space" },
   { href: "/floor", label: "Floor checklist" },
 ];
 
