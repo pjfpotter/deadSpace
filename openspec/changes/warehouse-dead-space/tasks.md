@@ -13,9 +13,9 @@ Two-hour MVP, in time order. If running late, drop group 5 (floor checklist) bef
 
 ## 2. Flags and fullness (0:20–0:35)
 
-- [ ] 2.1 Implement `lib/flags.ts` (mixed bin, over capacity, unknown capacity, stale count, locked bins, decision text) with tests; verify the real data yields `A-04-2` mixed and over, `B-03-2` over, `BULK-04` unknown, and stale-count flags for the 7 Nov bins
-- [ ] 2.2 Implement `lib/fullness.ts` (units used, known capacity, percent by size class, empty bins, under-half bins, unknown capacity excluded) with tests; verify Small 43%, Medium 49%, Large 48% and empty bins `A-05-1`, `B-03-3`
-- [ ] 2.3 Build the fullness page and the data flags panel; verify both render the figures above in the browser
+- [x] 2.1 Implement `lib/flags.ts` (mixed bin, over capacity, unknown capacity, stale count, locked bins, decision text) with tests; verify the real data yields `A-04-2` mixed and over, `B-03-2` over, `BULK-04` unknown, and stale-count flags for the 7 Nov bins
+- [x] 2.2 Implement `lib/fullness.ts` (units used, known capacity, percent by size class, empty bins, under-half bins, unknown capacity excluded) with tests; verify Small 43%, Medium 49%, Large 48% and empty bins `A-05-1`, `B-03-3`
+- [x] 2.3 Build the fullness page and the data flags panel; verify both render the figures above in the browser
 
 ## 3. Validator (0:35–0:50)
 
