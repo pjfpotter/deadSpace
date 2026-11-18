@@ -35,3 +35,15 @@ The four store rules: **(1)** one product per bin, **(2)** capacity in units, **
 - `CN-SND-120` stays in two bins because 130 units is more than one 120-unit bin can hold.
 
 **Result:** 12 bins checked, no rule broken. The independent validator agrees (zero violations) and 300 randomly generated stores also pass it.
+
+## Fit check: three answers checked by hand
+
+Each answer was worked out from the raw bin and stock counts, then compared with `/fit`.
+
+| Question | Worked by hand | Fit check says |
+|---|---|---|
+| 10 × `FG-PLN-LRG` (Large) | `C-03-2` holds 7 of 30, so 23 spare. 10 fits as a top-up. | Fits now, 10 into `C-03-2`. |
+| 200 × `FX-KEY-ALN` (Small) | Now: `A-05-2` has 69 spare and `A-05-1` is empty (120), so 189 and 11 short. After the plan, `A-05-1` holds `CN-VAR-1L`, so it is not room for keys. The merges free `A-02-1` and `A-02-3`: 69 + 120 + 11 = 200. | Does not fit now (11 short). Fits after merges: `A-05-2` 69, `A-02-1` 120, `A-02-3` 11, each freed bin naming its merge. |
+| 1 × `PK-BUB-ROL` (Bulk) | Only `BULK-04` holds it, and its capacity is unknown. `BULK-01` to `BULK-03` hold other products and no Bulk bin is empty. | Does not fit, 1 short, and says `BULK-04` was left out (capacity unknown). |
+
+**A hand-check mistake worth recording.** The first hand calculation for the keys wrongly counted `A-05-1` as free after the plan. The fit check was right: the plan puts 96 `CN-VAR-1L` into it, so it leaves no room for keys. This is the reason the check starts from the plan's end state and not the current count.

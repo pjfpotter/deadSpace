@@ -41,11 +41,18 @@ Two-hour MVP, in time order. If running late, drop group 5 (floor checklist) bef
 - [ ] 6.3 Write `docs/pitch-evidence.md` mapping each judging criterion to proof in the repo or app (understood the problem, useful, works and tested, AI errors found, data minimised, business case, next steps), calling the plan rules-checked and hand-verified, not optimal; verify every criterion links to a real file or page
 - [ ] 6.4 Run the full tests and the privacy grep, then rehearse the demo path once (fullness, flags, merges, putaway, floor view) against the 5-minute limit; verify all tests pass, the grep is empty and the run is under 5 minutes with no network-dependent step
 
+## 7. Fit check (only if groups 1-6 are done, about 25 minutes)
+
+- [x] 7.1 Implement `lib/fit.ts` (`checkFit`: input validation, spare room per bin, same-product bins before empty bins, size-class match, flagged bins excluded and reported, shortfall) with tests for each spec scenario; verify an unknown SKU, quantity 0 and 2.5 return errors and an oversized quantity returns the right `short`
+- [x] 7.2 Add the "after merges" state from `stockAfter(data, plan.steps)` and name the freeing merge for any bin in `plan.freedBins`; verify a quantity that fits only after merges reports the merge, and an over-capacity bin counts zero room
+- [x] 7.3 Build `app/fit/page.tsx` and a Nav link: product select, quantity input, two result cards (now, after merges) listing bins and units, behind `PlanGuard`; verify it renders on the real data, withholds "after merges" for a broken plan, and fits at 360px
+- [x] 7.4 Hand-check three answers against the store rules (one fits now, one only after merges, one short) and add them to `docs/hand-check.md`; verify the note lists product, quantity and result
+
 ## Later (not in the two-hour MVP)
 
 These are deferred, not tracked. Their specs stay in this change as the target behaviour.
 
-- Fit check: a product and quantity, now or after merges (spec `fit-check`; only if the MVP is done early, about 15 minutes).
+- Fit check: see group 7 above (spec `fit-check`; only if the MVP is done early).
 - ILP solver: HiGHS per size class behind the same solver interface, with a comparison test against greedy and a precomputed plan JSON (design decision 5).
 - In-repo LLM pipeline: generate instructions through the AI Gateway, check each against its move, fall back to templates, and log failures (spec `move-instruction-checking`). In the MVP the data/testing colleague does this by hand and logs mistakes in `docs/ai-error-log.md`.
 - Stretch: run-out risk, fast-mover slotting and the real-space view (specs `run-out-risk`, `fast-mover-slotting`, `real-space-view`).

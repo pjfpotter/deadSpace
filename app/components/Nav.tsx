@@ -5,6 +5,7 @@ const LINKS: { href: string; label: string }[] = [
   { href: "/", label: "How full" },
   { href: "/merges", label: "Merges" },
   { href: "/putaway", label: "Deliveries" },
+  { href: "/fit", label: "Can we fit it?" },
   { href: "/floor", label: "Floor checklist" },
 ];
 
