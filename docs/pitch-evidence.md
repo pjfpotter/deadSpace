@@ -11,8 +11,8 @@ Status: **Done** = proof exists in the repo or app today. **Waiting** = a teamma
 | **We showed it works, and tested it** | Done | 85 automated tests, including: an independent rules validator with one failing plan per rule; the plan checked against the real data; and 300 randomly generated stores. [Hand check](hand-check.md) of 12 bins against the four rules. Floor view checked in a real browser (ticks survive reload, undo, blocked storage, no overflow at 360px). |
 | **We showed where AI got it wrong** | Done (build) / Waiting (testing colleague) | [AI error log](ai-error-log.md): four real mistakes the AI made while building, each caught by a test or a hand check, with the fix. The testing colleague adds findings on AI-written move instructions. |
 | **We used only the data we needed, and kept it safe** | Done | [Data minimisation table](data-minimisation.md): every column kept or dropped with a reason. Names, personal mobiles, home addresses, supplier contacts, costs and the whole movements file are dropped. Raw data is gitignored and never deployed (the live site returns 404 for the data paths). A test fails if any personal field reaches the app. No AI is called by the running app. |
-| **We made the business case** | Waiting | Business colleague: `docs/business-case.md`. Facts it can cite are below. |
-| **We have next steps** | Done (technical) / Waiting (business) | Technical next steps below; the business colleague adds the commercial ones. |
+| **We made the business case** | Done | `docs/business-case.md` (about £3,100 a year saved, payback about 3 months, all £ and m² labelled as assumptions) with workings and an assumptions register in `docs/baseline-assessment.md`. Facts it can cite are below. |
+| **We have next steps** | Done | Technical next steps below; commercial next steps in `docs/business-case.md`. |
 | **We make a clear pitch** | Waiting | Brand and business colleagues: slides and demo script. A suggested 5-minute path is below. |
 | **We work well as a team** | Done | Each role has a reading guide and a place to hand work in ([README](../README.md)). Planned and tracked in `openspec/`, with every task verified. |
 
