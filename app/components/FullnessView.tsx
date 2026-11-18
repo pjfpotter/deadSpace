@@ -67,6 +67,7 @@ export default function FullnessView({ fullness }: { fullness: Fullness }) {
           label="Space used"
           value={overall.percent === null ? "n/a" : `${Math.round(overall.percent)}%`}
           note={`${overall.unitsInKnownBins} of ${overall.knownCapacity} units`}
+          primary
         />
         <Stat label="Empty bins" value={String(overall.emptyBins.length)} note={overall.emptyBins.join(", ") || "none"} />
         <Stat
@@ -113,12 +114,28 @@ export default function FullnessView({ fullness }: { fullness: Fullness }) {
   );
 }
 
-function Stat({ label, value, note }: { label: string; value: string; note: string }) {
+function Stat({
+  label,
+  value,
+  note,
+  primary = false,
+}: {
+  label: string;
+  value: string;
+  note: string;
+  primary?: boolean;
+}) {
   return (
-    <div className="rounded-lg border border-line bg-surface p-4">
-      <p className="text-sm text-muted">{label}</p>
-      <p className="mt-1 text-3xl font-semibold tabular-nums">{value}</p>
-      <p className="mt-1 text-xs text-muted">{note}</p>
+    <div
+      className={
+        primary
+          ? "rounded-md bg-header p-4 text-white"
+          : "rounded-md border border-line bg-surface p-4"
+      }
+    >
+      <p className={`text-sm ${primary ? "text-white/70" : "text-muted"}`}>{label}</p>
+      <p className="mt-1 text-4xl font-extrabold tabular-nums">{value}</p>
+      <p className={`mt-1 text-xs ${primary ? "text-white/70" : "text-muted"}`}>{note}</p>
     </div>
   );
 }

@@ -1,16 +1,12 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Manrope } from "next/font/google";
 import Nav from "./components/Nav";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const manrope = Manrope({
+  variable: "--font-manrope",
   subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  weight: ["400", "500", "600", "800"],
 });
 
 export const metadata: Metadata = {
@@ -23,14 +19,16 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+      className={`${manrope.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <Nav />
-        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-6 sm:px-6">{children}</main>
-        <footer className="mx-auto w-full max-w-5xl px-4 pb-8 pt-2 text-xs text-muted sm:px-6">
-          Fernbrook is an invented company. Plans use only bin codes, product codes and quantities;
-          no personal data.
+        <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-8 sm:px-6">{children}</main>
+        <footer className="border-t border-line">
+          <p className="mx-auto w-full max-w-5xl px-4 py-5 text-xs text-muted sm:px-6">
+            Fernbrook is an invented company. Plans use only bin codes, product codes and
+            quantities; no personal data.
+          </p>
         </footer>
       </body>
     </html>
