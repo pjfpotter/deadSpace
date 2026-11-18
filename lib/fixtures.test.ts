@@ -36,8 +36,17 @@ function keysOf(value: unknown, out = new Set<string>()): Set<string> {
 }
 
 describe("sanitised fixtures", () => {
-  it("has the four expected fixture files", () => {
-    expect(files.sort()).toEqual(["bins.json", "incoming.json", "products.json", "stock.json"]);
+  it("has the five expected fixture files", () => {
+    expect(files.sort()).toEqual(["bins.json", "incoming.json", "orders.json", "products.json", "stock.json"]);
+  });
+
+  it("orders keep only ref, pseudonymous label, date, sku and quantity", () => {
+    const orders = JSON.parse(readFileSync(path.join(FIXTURES, "orders.json"), "utf8"));
+    expect(orders.map((o: { orderRef: string }) => o.orderRef)).toEqual(["CO-8801", "CO-8802", "CO-8803"]);
+    for (const o of orders) {
+      expect(Object.keys(o).sort()).toEqual(["customerLabel", "deliveryDate", "orderRef", "quantity", "sku"]);
+      expect(o.customerLabel).toMatch(/^Customer \d+$/);
+    }
   });
 
   it.each(files)("%s contains no personal or unneeded fields", (file) => {

@@ -1,0 +1,23 @@
+[
+  {
+    "orderRef": "CO-8801",
+    "customerLabel": "Customer 14",
+    "deliveryDate": "2026-12-04",
+    "sku": "FG-BEN-2S",
+    "quantity": 40
+  },
+  {
+    "orderRef": "CO-8802",
+    "customerLabel": "Customer 03",
+    "deliveryDate": "2026-12-04",
+    "sku": "FG-CHR-FLD",
+    "quantity": 16
+  },
+  {
+    "orderRef": "CO-8803",
+    "customerLabel": "Customer 09",
+    "deliveryDate": "2026-12-11",
+    "sku": "FG-BEN-3S",
+    "quantity": 24
+  }
+]

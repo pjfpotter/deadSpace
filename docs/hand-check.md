@@ -47,3 +47,24 @@ Each answer was worked out from the raw bin and stock counts, then compared with
 | 1 × `PK-BUB-ROL` (Bulk) | Only `BULK-04` holds it, and its capacity is unknown. `BULK-01` to `BULK-03` hold other products and no Bulk bin is empty. | Does not fit, 1 short, and says `BULK-04` was left out (capacity unknown). |
 
 **A hand-check mistake worth recording.** The first hand calculation for the keys wrongly counted `A-05-1` as free after the plan. The fit check was right: the plan puts 96 `CN-VAR-1L` into it, so it leaves no room for keys. This is the reason the check starts from the plan's end state and not the current count.
+
+## December orders: Large bins on 3 December, worked by hand
+
+Worked from the Large bins in the table above (after the plan), before looking at `/december`. Large has 6 bins of 30. Assumptions: benches land on 3 Dec, orders leave on the day before delivery.
+
+| Bin | After the plan | Product |
+|---|---|---|
+| `C-01-1` | 29 | two-seat benches |
+| `C-01-2` | 18 | three-seat benches |
+| `C-02-1` | 30 | three-seat benches |
+| `C-02-2` | 12 | bistro tables |
+| `C-03-1` | 20 | folding chairs |
+| `C-03-2` | 7 | large planters |
+
+**No changes.** Benches land: 29 + 40 = 69 two-seat benches, which is 30 + 30 + 9, so 3 bins. Three-seat benches 48 = 30 + 18, 2 bins. Tables, chairs, planters 1 bin each. Total 3 + 2 + 1 + 1 + 1 = **8 bins against 6**, so 2 short. Units are 69 + 48 + 12 + 20 + 7 = 156 of 180, so the problem is bins (one product per bin), not units. A bench cannot use the free space in any Small, Medium or Bulk bin (rule 4), and all four Bulk bins are used.
+
+**Send `CO-8803` (24 three-seat benches) early, on 2 Dec.** Take 18 from `C-01-2` (empties it) and 6 from `C-02-1` (leaves 24). Three-seat benches now need 1 bin. Large is 5 bins in use with `C-01-2` free. Benches land: 69 needs 3 bins, so 3 + 1 + 1 + 1 + 1 = 7, still **1 short**.
+
+**Split the benches into two batches of 20, each shipped the day it arrives.** First batch: 29 + 20 = 49 = 30 in `C-01-1` and 19 in `C-01-2`, so 2 bins and 6 in use (exactly 6 of 6). It leaves with 20 of `CO-8801`: 19 out of `C-01-2` and 1 out of `C-01-1`, back to 29. Second batch repeats it. No rule is broken: one product per bin, 30 ≤ 30, Large = Large.
+
+**Result:** the hand count matches `/december`: 8 of 6 with no changes, 7 of 6 after dispatching early, 6 of 6 after the split. The same arithmetic also gives 6 of 6 once `CO-8801` and `CO-8802` leave on 3 Dec without any changes, and 5 of 6 after `CO-8803` leaves on 10 Dec.
