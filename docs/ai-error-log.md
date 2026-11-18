@@ -34,6 +34,14 @@ Two sections: mistakes caught while building (below), and the testing colleague'
 - **Fix:** We corrected the tests, and made the second one assert exact bin contents instead of a count, which is a stronger check.
 - **Lesson:** A passing test is only as good as its expected value. Each expectation was checked against the data by hand.
 
+### 5. Our own validator only checked the end result (found by Copilot's review)
+
+- **What the AI built:** The independent rules validator checked one product per bin and capacity only on the final state, after every step had been applied.
+- **What was true:** A plan could put product X into a bin before the move that emptied product Y. The end state looked fine, so it passed, but nobody could do it on the floor.
+- **How it was caught:** We gave Copilot our design and checked each of its criticisms against the code. This one was real: a test with the two moves in the wrong order passed the validator.
+- **Fix:** `lib/validate.ts` now checks one product per bin after every step. Tests in `lib/review.test.ts` cover the wrong order (fails) and the right order (passes). The full accept/reject reasoning for Copilot's other points is in `docs/review-response.md`.
+- **Lesson:** The check we rely on to catch AI mistakes was itself AI-written and had a gap. A second reviewer found it, and we only accepted the criticisms that held up against the code.
+
 ## From our testing colleague
 
 _To add: what the AI got wrong when asked to word the move instructions (wrong bin codes, wrong quantities, invented steps), checked against the plan's move list. For each: the move, what the AI wrote, what was wrong, and how you caught it._
