@@ -168,7 +168,8 @@ function writeDoc(rowCounts: Record<string, number>) {
     lines.push(`## ${file} (${rowCounts[file]} rows)`, "", "| Column | Decision | Why |", "|---|---|---|");
     for (const [col, d] of Object.entries(cols)) {
       lines.push(`| \`${col}\` | ${d.keep ? "Kept" : "Dropped"} | ${d.why} |`);
-      d.keep ? kept++ : dropped++;
+      if (d.keep) kept++;
+      else dropped++;
     }
     lines.push("");
   }

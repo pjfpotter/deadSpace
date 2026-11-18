@@ -16,12 +16,9 @@ const data: StoreData = {
   incoming: [],
 };
 
-const step = (quantity: number) =>
-  ({ type: "move", id: "m1", kind: "merge", sku: "X", quantity, from: "S2", to: "S1" }) as const;
 const planOf = (quantity: number): Plan => {
-  const s = step(quantity);
-  const { type: _t, ...m } = s;
-  return { moves: [m], putaways: [], unplaced: [], freedBins: ["S2"], steps: [s] };
+  const m = { id: "m1", kind: "merge" as const, sku: "X", quantity, from: "S2", to: "S1" };
+  return { moves: [m], putaways: [], unplaced: [], freedBins: ["S2"], steps: [{ type: "move", ...m }] };
 };
 
 describe("PlanGuard", () => {

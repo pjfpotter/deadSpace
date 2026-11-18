@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import { computeFullness } from "./fullness";
-import type { Bin, IncomingLine, Plan, Product, StockRow, StoreData } from "./model";
+import type { Bin, IncomingLine, Product, StockRow, StoreData } from "./model";
 import { solve } from "./solve";
 import { solveGreedy } from "./solve-greedy";
 import { loadStore } from "./store";

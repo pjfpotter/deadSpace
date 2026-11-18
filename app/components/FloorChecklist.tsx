@@ -22,11 +22,15 @@ export default function FloorChecklist({ steps, hash }: { steps: FloorStep[]; ha
   const [ready, setReady] = useState(false);
 
   // Load saved progress after mount (never during render, so server and client agree).
+  // Browser storage only exists after hydration, so this is a one-off sync with an
+  // external system. Reading it during render would make server and client disagree.
   useEffect(() => {
     const s = browserStorage();
+    /* eslint-disable react-hooks/set-state-in-effect */
     setStorage(s);
     setTicks(loadTicks(s, hash, steps.map((x) => x.id)));
     setReady(true);
+    /* eslint-enable react-hooks/set-state-in-effect */
   }, [hash, steps]);
 
   function toggle(id: string) {

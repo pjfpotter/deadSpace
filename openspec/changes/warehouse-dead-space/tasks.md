@@ -36,7 +36,7 @@ Two-hour MVP, in time order. If running late, drop group 5 (floor checklist) bef
 
 ## 6. Ship and pitch support (1:35–2:00)
 
-- [ ] 6.1 Redeploy to Vercel; verify the public URL loads every page and shows no personal data
+- [x] 6.1 Redeploy to Vercel; verify the public URL loads every page and shows no personal data
 - [ ] 6.2 Drop teammates' work into the repo (`docs/business-case.md`, `docs/ai-error-log.md`, `public/brand/`) and apply the brand to the header and colours; verify the files exist and the app shows the brand
 - [ ] 6.3 Write `docs/pitch-evidence.md` mapping each judging criterion to proof in the repo or app (understood the problem, useful, works and tested, AI errors found, data minimised, business case, next steps), calling the plan rules-checked and hand-verified, not optimal; verify every criterion links to a real file or page
 - [ ] 6.4 Run the full tests and the privacy grep, then rehearse the demo path once (fullness, flags, merges, putaway, floor view) against the 5-minute limit; verify all tests pass, the grep is empty and the run is under 5 minutes with no network-dependent step
