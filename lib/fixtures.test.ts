@@ -37,7 +37,7 @@ function keysOf(value: unknown, out = new Set<string>()): Set<string> {
 
 describe("sanitised fixtures", () => {
   it("has the five expected fixture files", () => {
-    expect(files.sort()).toEqual(["bins.json", "incoming.json", "orders.json", "products.json", "stock.json"]);
+    expect(files.sort()).toEqual(["bins.json", "incoming.json", "movements.json", "orders.json", "products.json", "stock.json"]);
   });
 
   it("orders keep only ref, pseudonymous label, date, sku and quantity", () => {
@@ -60,6 +60,14 @@ describe("sanitised fixtures", () => {
     const stock = JSON.parse(readFileSync(path.join(FIXTURES, "stock.json"), "utf8"));
     for (const row of stock) {
       expect(Object.keys(row).sort()).toEqual(["bin", "lastCounted", "quantity", "sku"]);
+    }
+  });
+
+  it("movements keep only date, type, sku and quantity", () => {
+    const movements = JSON.parse(readFileSync(path.join(FIXTURES, "movements.json"), "utf8"));
+    expect(movements.length).toBeGreaterThan(0);
+    for (const m of movements) {
+      expect(Object.keys(m).sort()).toEqual(["date", "quantity", "sku", "type"]);
     }
   });
 

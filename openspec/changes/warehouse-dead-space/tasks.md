@@ -48,6 +48,15 @@ Two-hour MVP, in time order. If running late, drop group 5 (floor checklist) bef
 - [x] 7.3 Build `app/fit/page.tsx` and a Nav link: product select, quantity input, two result cards (now, after merges) listing bins and units, behind `PlanGuard`; verify it renders on the real data, withholds "after merges" for a broken plan, and fits at 360px
 - [x] 7.4 Hand-check three answers against the store rules (one fits now, one only after merges, one short) and add them to `docs/hand-check.md`; verify the note lists product, quantity and result
 
+## 8. Stretch views (built after the MVP; not part of the plan or solver)
+
+- [x] 8.1 Keep date, type, SKU and quantity from `movements.csv` in `fixtures/movements.json` (names, mobiles, bins and references stay dropped) and extend the fixtures privacy test; verify the test passes and `docs/data-minimisation.md` lists the new decisions
+- [x] 8.2 Run-out risk: `lib/run-out.ts` and `/run-out` (cover = counted / average daily outbound, 7-day threshold, incoming lines beside each product, unknown cover never a number, basis and reconciliation caveat shown); verify against the spec scenarios in `lib/stretch.test.ts`
+- [x] 8.3 Fast-mover slotting: `lib/slotting.ts` and `/slotting` (rank by outbound movements, lower bay then lower shelf is easier, swaps only between single-product bins of one size that fit capacity, separate from the plan); verify the plan is byte-identical before and after
+- [x] 8.4 Real-space view: `lib/space-weights.ts` (the one editable place), `lib/real-space.ts` and `/real-space` (units fill beside estimated-space fill per size class, assumption note shown); verify the units percentages match the fullness page
+
+Notes: days of history are days with a movement (40), not calendar days (56), because the stores do not move stock at weekends. Space figures use the corrected Small 0.0025 m³ per unit and assumed bin volumes from the business-case branch; both are assumptions.
+
 ## Later (not in the two-hour MVP)
 
 These are deferred, not tracked. Their specs stay in this change as the target behaviour.
@@ -55,7 +64,7 @@ These are deferred, not tracked. Their specs stay in this change as the target b
 - Fit check: see group 7 above (spec `fit-check`; only if the MVP is done early).
 - ILP solver: HiGHS per size class behind the same solver interface, with a comparison test against greedy and a precomputed plan JSON (design decision 5).
 - In-repo LLM pipeline: generate instructions through the AI Gateway, check each against its move, fall back to templates, and log failures (spec `move-instruction-checking`). In the MVP the data/testing colleague does this by hand and logs mistakes in `docs/ai-error-log.md`.
-- Stretch: run-out risk, fast-mover slotting and the real-space view (specs `run-out-risk`, `fast-mover-slotting`, `real-space-view`).
+- Stretch views: built, see group 8.
 
 ## Workflow follow-up
 

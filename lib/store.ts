@@ -1,9 +1,10 @@
 import binsJson from "@/fixtures/bins.json";
 import incomingJson from "@/fixtures/incoming.json";
+import movementsJson from "@/fixtures/movements.json";
 import ordersJson from "@/fixtures/orders.json";
 import productsJson from "@/fixtures/products.json";
 import stockJson from "@/fixtures/stock.json";
-import type { Bin, Order, StockRow, StoreData } from "./model";
+import type { Bin, Movement, Order, StockRow, StoreData } from "./model";
 
 /** Sanitised store data, as written by scripts/ingest.ts. */
 export function loadStore(): StoreData {
@@ -18,6 +19,11 @@ export function loadStore(): StoreData {
 /** Late customer orders (outbound), as written by scripts/ingest-orders.ts. */
 export function loadOrders(): Order[] {
   return ordersJson as Order[];
+}
+
+/** Movement history (date, type, product, quantity only), as written by scripts/ingest.ts. */
+export function loadMovements(): Movement[] {
+  return movementsJson as Movement[];
 }
 
 /** Stock rows grouped by bin code. */
