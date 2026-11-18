@@ -101,6 +101,8 @@ export interface Plan {
   freedBins: string[];
   /** Moves and putaways in an order where each step can be done when reached. */
   steps: Step[];
+  /** Plain-English decisions worth showing, e.g. why a product was not merged. */
+  notes?: string[];
 }
 
 /** A bin's contents: one product at most is legal, more is a data problem. */

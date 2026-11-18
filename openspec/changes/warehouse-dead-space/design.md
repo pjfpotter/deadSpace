@@ -8,7 +8,7 @@ Data shape (observed): 34 bins (15 Small at 120, 9 Medium at 60, 6 Large at 30, 
 
 Hard constraints: one developer owns the repo, two hours to a working MVP, a 5-minute demo for judges, and a demo that must not depend on a network call. The stock count is the truth; movements do not reconcile to it and are only used for stretch goals.
 
-A hand check shows the incoming list fits, but only if merges run first. Medium has one empty bin and two Medium products with no stock incoming (`CP-ARM-PR`, `CP-TOP-BIS`); merging `CP-LEG-BEN` and `CP-BRK-STL` frees two. Large needs `FG-BEN-2S` merged to free a bin for the second `FG-BEN-3S` bin. Bulk needs `PK-CTN-BEN` merged before 200 more cartons can land. These are the expected results the tests are written against.
+A hand check shows the incoming list fits, but only if merges run first. Medium has one empty bin and two Medium products with no stock incoming (`CP-ARM-PR`, `CP-TOP-BIS`); merging `CP-LEG-BEN` and `CP-BRK-STL` frees two. Large needs `FG-BEN-2S` merged to free a bin for the second `FG-BEN-3S` bin. Merges are sized against stock plus incoming, so a merge that the delivery would immediately undo is skipped: `PK-CTN-BEN` (270 + 200 = 470 needs two 300-unit bins either way) and `FX-SCR-440` (105 + 120 = 225 needs two 120-unit bins either way) stay as they are and take their delivery as top-ups; `CN-SND-120` (130) cannot fit one bin. (An earlier draft wrongly said Bulk needed `PK-CTN-BEN` merged first; building the solver showed it does not.) These are the expected results the tests are written against.
 
 ## Goals / Non-Goals
 

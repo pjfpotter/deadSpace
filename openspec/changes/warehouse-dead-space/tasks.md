@@ -24,10 +24,10 @@ Two-hour MVP, in time order. If running late, drop group 5 (floor checklist) bef
 
 ## 4. Greedy merges and putaway (0:50–1:20)
 
-- [ ] 4.1 Implement `lib/solve-greedy.ts` for the merge list (fix the mixed bin first, then merge each product into its fullest allowed bin, no chained moves) with tests; verify the plan moves `CN-OIL-1L` out of `A-04-2` first, frees one `CP-LEG-BEN` bin, one `CP-BRK-STL` bin, `C-01-2` and one `PK-CTN-BEN` bin, and keeps `CN-SND-120` in two bins
-- [ ] 4.2 Extend it to place every incoming line (top up same-product bins, then empty bins, after merges), report any unplaced units, and order steps so freeing merges precede dependent putaways; verify a test that every incoming reference is fully placed and the plan passes the validator
-- [ ] 4.3 Hand-check five bins from the output against the four store rules and record it in `docs/hand-check.md`; verify the note lists the bins and results
-- [ ] 4.4 Build the merges page and the putaway page, showing bins freed and what made room; verify both render from the plan with the validator guard active
+- [x] 4.1 Implement `lib/solve-greedy.ts` for the merge list (fix the mixed bin first, then merge each product into its fullest allowed bin, no chained moves) with tests; verify the plan moves `CN-OIL-1L` out of `A-04-2` first, frees exactly `A-02-1`, `A-02-3`, `B-01-2`, `B-02-2` and `C-01-2`, and leaves `CN-SND-120`, `FX-SCR-440` and `PK-CTN-BEN` unmerged with a stated reason (merges are sized against stock plus incoming)
+- [x] 4.2 Extend it to place every incoming line (top up same-product bins, then empty bins, after merges), report any unplaced units, and order steps so freeing merges precede dependent putaways; verify a test that every incoming reference is fully placed and the plan passes the validator
+- [x] 4.3 Hand-check five bins from the output against the four store rules and record it in `docs/hand-check.md`; verify the note lists the bins and results
+- [x] 4.4 Build the merges page and the putaway page, showing bins freed and what made room; verify both render from the plan with the validator guard active
 
 ## 5. Floor checklist (1:20–1:35, cut first if late)
 

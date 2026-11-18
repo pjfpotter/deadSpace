@@ -1,7 +1,11 @@
 import Link from "next/link";
 
 // Add a link here only when its page exists.
-const LINKS: { href: string; label: string }[] = [{ href: "/", label: "How full" }];
+const LINKS: { href: string; label: string }[] = [
+  { href: "/", label: "How full" },
+  { href: "/merges", label: "Merges" },
+  { href: "/putaway", label: "Deliveries" },
+];
 
 export default function Nav() {
   return (
