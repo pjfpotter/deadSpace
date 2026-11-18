@@ -4,7 +4,11 @@
 
 *Made slowly. Made to stay.*
 
-A hackathon project for the 1066 Manufacturing Hackathon (18 Nov 2026). Fernbrook Furniture Co. says its stores are "full", yet most bins are about half empty and next week's deliveries won't fit. We're building a web app that shows how full the stores really are, lists the bin merges that free space, and plans where every incoming delivery goes.
+**Live app: https://fernbrook-dead-space.vercel.app**
+
+This is a hackathon project, built by a small team (data and testing, business, brand and developer) for the 1066 Manufacturing Hackathon on 18 Nov 2026. Fernbrook Furniture Co. says its stores are "full", yet most bins are about half empty and next week's deliveries won't fit. We built a web app that shows how full the stores really are, lists the bin merges that free space, and plans where every incoming delivery goes.
+
+A 23-second narrated launch video is in `brag-output/brag.mp4`.
 
 Fernbrook is an invented company. All names, suppliers and numbers in the brief are made up.
 
@@ -16,7 +20,7 @@ Fernbrook is an invented company. All names, suppliers and numbers in the brief 
 - Also: a "can we fit it?" check, data-problem flags, a phone-friendly floor checklist, and AI-written move instructions that are checked against the plan
 - Stretch: run-out warnings, fast-mover slotting, capacity as real space
 
-Status: planned, not built yet. The plan lives in `openspec/changes/warehouse-dead-space/`.
+Status: built for the hackathon and live at the URL above. The plan lives in `openspec/changes/warehouse-dead-space/`, and [docs/pitch-evidence.md](docs/pitch-evidence.md) shows what is done and what is next.
 
 ## Who reads what
 
