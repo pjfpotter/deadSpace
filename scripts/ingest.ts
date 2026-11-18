@@ -89,6 +89,13 @@ function num(value: string, ctx: string): number {
   return n;
 }
 
+/** A whole number of units, zero or more. Rejects negatives and fractions in counts and capacities. */
+function units(value: string, ctx: string): number {
+  const n = num(value, ctx);
+  if (!Number.isInteger(n) || n < 0) throw new Error(`Bad unit count "${value}" in ${ctx}: must be a whole number, zero or more`);
+  return n;
+}
+
 function readRaw(file: string) {
   const text = readFileSync(path.join(RAW, file), "utf8");
   const header = csvHeader(text);
@@ -107,7 +114,7 @@ function main() {
     code: r.bin_code,
     zone: r.zone,
     size: size(r.bin_size, `bins ${r.bin_code}`),
-    capacity: r.capacity_units === "" ? null : num(r.capacity_units, `bins ${r.bin_code}`),
+    capacity: r.capacity_units === "" ? null : units(r.capacity_units, `bins ${r.bin_code}`),
   }));
 
   const products: Product[] = readRaw("products.csv").rows.map((r) => ({
@@ -120,7 +127,7 @@ function main() {
   const stock: StockRow[] = readRaw("stock.csv").rows.map((r) => ({
     bin: r.bin_code,
     sku: r.sku,
-    quantity: num(r.quantity, `stock ${r.bin_code}`),
+    quantity: units(r.quantity, `stock ${r.bin_code}`),
     lastCounted: r.last_counted,
   }));
 
@@ -130,7 +137,7 @@ function main() {
     source: r.source,
     supplier: r.supplier,
     sku: r.sku,
-    quantity: num(r.quantity, `incoming ${r.reference}`),
+    quantity: units(r.quantity, `incoming ${r.reference}`),
   }));
 
   // Movements are validated against the policy (so unknown columns still stop the run)

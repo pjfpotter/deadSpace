@@ -9,7 +9,8 @@ import type { Plan, Step, StoreData } from "./model";
  * Rules checked:
  *  - valid bins, products and quantities
  *  - no move takes more than a bin holds when it happens
- *  - one product per bin, and size class matches, in the final state
+ *  - one product per bin at every step (a step may not land in a bin still holding another product)
+ *  - size class matches, in the final state
  *  - capacity is not exceeded (a bin that was already over capacity may not get worse)
  *  - no stock is added to a locked bin (over capacity, or capacity unknown)
  *  - no bin is both a source and a destination for the same product (no stock moved twice)
@@ -87,6 +88,16 @@ export function validatePlan(data: StoreData, plan: Plan): Violation[] {
   const initialBinUnits = new Map<string, number>();
   for (const r of data.stock) initialBinUnits.set(r.bin, (initialBinUnits.get(r.bin) ?? 0) + r.quantity);
 
+  const initiallyMixed = new Set<string>();
+  {
+    const first = new Map<string, string>();
+    for (const r of data.stock) {
+      const f = first.get(r.bin);
+      if (f === undefined) first.set(r.bin, r.sku);
+      else if (f !== r.sku) initiallyMixed.add(r.bin);
+    }
+  }
+
   for (const s of steps) {
     const label = stepLabel(s);
     let ok = true;
@@ -131,6 +142,22 @@ export function validatePlan(data: StoreData, plan: Plan): Violation[] {
       state.set(key(s.from, s.sku), have - s.quantity);
     }
     state.set(key(s.to, s.sku), (state.get(key(s.to, s.sku)) ?? 0) + s.quantity);
+
+    // The bin must be legal at this moment, not just at the end: a step that puts one
+    // product into a bin still holding another cannot be done on the floor, even if a
+    // later step clears the bin. (A bin that was already mixed at the count is left to
+    // the final-state check below.)
+    if (!initiallyMixed.has(s.to)) {
+      const others = [...state].filter(([k, q]) => q > 0 && k.startsWith(`${s.to}\u0000`) && k !== key(s.to, s.sku));
+      if (others.length > 0) {
+        v.push({
+          rule: "one-product-per-bin",
+          message: `Cannot ${label}: ${s.to} still holds ${others.map(([k, q]) => `${q} × ${k.split("\u0000")[1]}`).join(" and ")} at that point. Empty it first.`,
+          bin: s.to,
+          sku: s.sku,
+        });
+      }
+    }
   }
 
   // --- no stock moved twice: a bin must not be both a source and a destination for one product ---
