@@ -19,8 +19,8 @@ Two-hour MVP, in time order. If running late, drop group 5 (floor checklist) bef
 
 ## 3. Validator (0:35–0:50)
 
-- [ ] 3.1 Implement `lib/validate.ts` checking one product per bin, capacity, size class, valid bin codes, stock conservation, no chained moves, no move exceeding bin contents and the locked-bin receipt rule; verify with one failing-plan test per rule and a passing-plan test
-- [ ] 3.2 Add a `validatePlan` guard used by every page that shows a plan; verify a deliberately broken plan shows violations instead of moves
+- [x] 3.1 Implement `lib/validate.ts` checking one product per bin, capacity, size class, valid bin codes, stock conservation, no chained moves, no move exceeding bin contents and the locked-bin receipt rule; verify with one failing-plan test per rule and a passing-plan test
+- [x] 3.2 Add a `validatePlan` guard used by every page that shows a plan; verify a deliberately broken plan shows violations instead of moves
 
 ## 4. Greedy merges and putaway (0:50–1:20)
 
