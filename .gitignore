@@ -23,3 +23,6 @@ next-env.d.ts
 *.pem
 npm-debug.log*
 .vercel
+
+# Late organiser brief orders (pseudonymised labels only) are meant to be committed
+!docs/spec-update/*.csv
