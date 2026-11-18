@@ -1,0 +1,50 @@
+[
+  {
+    "reference": "PO-4417",
+    "expectedDate": "2026-11-24",
+    "source": "Supplier delivery",
+    "supplier": "Brightcoat Finishes",
+    "sku": "CN-VAR-1L",
+    "quantity": 96
+  },
+  {
+    "reference": "WO-1031",
+    "expectedDate": "2026-11-24",
+    "source": "Production run",
+    "supplier": "In-house production",
+    "sku": "CP-ARM-PR",
+    "quantity": 48
+  },
+  {
+    "reference": "WO-1032",
+    "expectedDate": "2026-11-25",
+    "source": "Production run",
+    "supplier": "In-house production",
+    "sku": "CP-TOP-BIS",
+    "quantity": 40
+  },
+  {
+    "reference": "PO-4419",
+    "expectedDate": "2026-11-25",
+    "source": "Supplier delivery",
+    "supplier": "Hartwell Fixings",
+    "sku": "FX-SCR-440",
+    "quantity": 120
+  },
+  {
+    "reference": "PO-4420",
+    "expectedDate": "2026-11-26",
+    "source": "Supplier delivery",
+    "supplier": "PackRight Supplies",
+    "sku": "PK-CTN-BEN",
+    "quantity": 200
+  },
+  {
+    "reference": "WO-1033",
+    "expectedDate": "2026-11-27",
+    "source": "Production run",
+    "supplier": "In-house production",
+    "sku": "FG-BEN-3S",
+    "quantity": 30
+  }
+]

@@ -1,0 +1,206 @@
+[
+  {
+    "code": "A-01-1",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-01-2",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-01-3",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-02-1",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-02-2",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-02-3",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-03-1",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-03-2",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-03-3",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-04-1",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-04-2",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-04-3",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-05-1",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-05-2",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "A-05-3",
+    "zone": "Aisle A, small goods",
+    "size": "Small",
+    "capacity": 120
+  },
+  {
+    "code": "B-01-1",
+    "zone": "Aisle B, medium goods",
+    "size": "Medium",
+    "capacity": 60
+  },
+  {
+    "code": "B-01-2",
+    "zone": "Aisle B, medium goods",
+    "size": "Medium",
+    "capacity": 60
+  },
+  {
+    "code": "B-01-3",
+    "zone": "Aisle B, medium goods",
+    "size": "Medium",
+    "capacity": 60
+  },
+  {
+    "code": "B-02-1",
+    "zone": "Aisle B, medium goods",
+    "size": "Medium",
+    "capacity": 60
+  },
+  {
+    "code": "B-02-2",
+    "zone": "Aisle B, medium goods",
+    "size": "Medium",
+    "capacity": 60
+  },
+  {
+    "code": "B-02-3",
+    "zone": "Aisle B, medium goods",
+    "size": "Medium",
+    "capacity": 60
+  },
+  {
+    "code": "B-03-1",
+    "zone": "Aisle B, medium goods",
+    "size": "Medium",
+    "capacity": 60
+  },
+  {
+    "code": "B-03-2",
+    "zone": "Aisle B, medium goods",
+    "size": "Medium",
+    "capacity": 60
+  },
+  {
+    "code": "B-03-3",
+    "zone": "Aisle B, medium goods",
+    "size": "Medium",
+    "capacity": 60
+  },
+  {
+    "code": "C-01-1",
+    "zone": "Aisle C, large goods",
+    "size": "Large",
+    "capacity": 30
+  },
+  {
+    "code": "C-01-2",
+    "zone": "Aisle C, large goods",
+    "size": "Large",
+    "capacity": 30
+  },
+  {
+    "code": "C-02-1",
+    "zone": "Aisle C, large goods",
+    "size": "Large",
+    "capacity": 30
+  },
+  {
+    "code": "C-02-2",
+    "zone": "Aisle C, large goods",
+    "size": "Large",
+    "capacity": 30
+  },
+  {
+    "code": "C-03-1",
+    "zone": "Aisle C, large goods",
+    "size": "Large",
+    "capacity": 30
+  },
+  {
+    "code": "C-03-2",
+    "zone": "Aisle C, large goods",
+    "size": "Large",
+    "capacity": 30
+  },
+  {
+    "code": "BULK-01",
+    "zone": "Bulk pallet area",
+    "size": "Bulk",
+    "capacity": 300
+  },
+  {
+    "code": "BULK-02",
+    "zone": "Bulk pallet area",
+    "size": "Bulk",
+    "capacity": 300
+  },
+  {
+    "code": "BULK-03",
+    "zone": "Bulk pallet area",
+    "size": "Bulk",
+    "capacity": 300
+  },
+  {
+    "code": "BULK-04",
+    "zone": "Bulk pallet area",
+    "size": "Bulk",
+    "capacity": null
+  }
+]

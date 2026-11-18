@@ -1,0 +1,164 @@
+[
+  {
+    "sku": "FX-SCR-440",
+    "name": "Stainless screws 4x40mm (box of 200)",
+    "category": "Fixings",
+    "size": "Small"
+  },
+  {
+    "sku": "FX-BLT-M8",
+    "name": "Coach bolts M8 (bag of 20)",
+    "category": "Fixings",
+    "size": "Small"
+  },
+  {
+    "sku": "FX-HNG-BRS",
+    "name": "Brass hinges (pair)",
+    "category": "Fixings",
+    "size": "Small"
+  },
+  {
+    "sku": "FX-PAD-FLT",
+    "name": "Felt feet pads (bag of 16)",
+    "category": "Fixings",
+    "size": "Small"
+  },
+  {
+    "sku": "CN-SND-120",
+    "name": "Sanding discs 120 grit (pack of 50)",
+    "category": "Consumables",
+    "size": "Small"
+  },
+  {
+    "sku": "CN-GLU-1L",
+    "name": "Exterior wood glue 1L",
+    "category": "Consumables",
+    "size": "Small"
+  },
+  {
+    "sku": "FX-DWL-08",
+    "name": "Beech dowels 8mm (bag of 100)",
+    "category": "Fixings",
+    "size": "Small"
+  },
+  {
+    "sku": "CN-OIL-1L",
+    "name": "Danish oil 1L",
+    "category": "Consumables",
+    "size": "Small"
+  },
+  {
+    "sku": "CN-VAR-1L",
+    "name": "Exterior varnish 1L",
+    "category": "Consumables",
+    "size": "Small"
+  },
+  {
+    "sku": "FX-PLT-BRS",
+    "name": "Brass name plate",
+    "category": "Fixings",
+    "size": "Small"
+  },
+  {
+    "sku": "FX-KEY-ALN",
+    "name": "Allen keys (bag of 10)",
+    "category": "Fixings",
+    "size": "Small"
+  },
+  {
+    "sku": "CP-LEG-BEN",
+    "name": "Bench leg, oak",
+    "category": "Components",
+    "size": "Medium"
+  },
+  {
+    "sku": "CP-LEG-TBL",
+    "name": "Table leg, oak",
+    "category": "Components",
+    "size": "Medium"
+  },
+  {
+    "sku": "CP-BRK-STL",
+    "name": "Steel bracket set",
+    "category": "Components",
+    "size": "Medium"
+  },
+  {
+    "sku": "CP-SLT-SET",
+    "name": "Seat slat set",
+    "category": "Components",
+    "size": "Medium"
+  },
+  {
+    "sku": "CP-CUS-SAG",
+    "name": "Seat cushion, sage",
+    "category": "Components",
+    "size": "Medium"
+  },
+  {
+    "sku": "CP-CUS-CHA",
+    "name": "Seat cushion, charcoal",
+    "category": "Components",
+    "size": "Medium"
+  },
+  {
+    "sku": "CP-ARM-PR",
+    "name": "Armrest pair, oak",
+    "category": "Components",
+    "size": "Medium"
+  },
+  {
+    "sku": "CP-TOP-BIS",
+    "name": "Bistro tabletop, slatted (new)",
+    "category": "Components",
+    "size": "Medium"
+  },
+  {
+    "sku": "FG-BEN-2S",
+    "name": "Garden bench, 2-seat",
+    "category": "Finished goods",
+    "size": "Large"
+  },
+  {
+    "sku": "FG-BEN-3S",
+    "name": "Garden bench, 3-seat",
+    "category": "Finished goods",
+    "size": "Large"
+  },
+  {
+    "sku": "FG-TBL-BIS",
+    "name": "Bistro table",
+    "category": "Finished goods",
+    "size": "Large"
+  },
+  {
+    "sku": "FG-CHR-FLD",
+    "name": "Folding chair (pair)",
+    "category": "Finished goods",
+    "size": "Large"
+  },
+  {
+    "sku": "FG-PLN-LRG",
+    "name": "Planter, large",
+    "category": "Finished goods",
+    "size": "Large"
+  },
+  {
+    "sku": "PK-CTN-BEN",
+    "name": "Cardboard carton, bench size",
+    "category": "Packaging",
+    "size": "Bulk"
+  },
+  {
+    "sku": "RM-OAK-24",
+    "name": "Oak board 2.4m",
+    "category": "Raw materials",
+    "size": "Bulk"
+  },
+  {
+    "sku": "PK-BUB-ROL",
+    "name": "Bubble wrap roll",
+    "category": "Packaging",
+    "size": "Bulk"
+  }
+]

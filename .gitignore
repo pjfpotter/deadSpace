@@ -13,3 +13,13 @@ node_modules/
 
 # OS / editor
 .DS_Store
+
+# Next.js / tooling
+/out/
+/build
+/coverage
+next-env.d.ts
+*.tsbuildinfo
+*.pem
+npm-debug.log*
+.vercel

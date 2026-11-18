@@ -1,0 +1,200 @@
+[
+  {
+    "bin": "A-01-1",
+    "sku": "FX-SCR-440",
+    "quantity": 70,
+    "lastCounted": "2026-11-11"
+  },
+  {
+    "bin": "A-01-2",
+    "sku": "FX-SCR-440",
+    "quantity": 35,
+    "lastCounted": "2026-11-07"
+  },
+  {
+    "bin": "A-01-3",
+    "sku": "FX-BLT-M8",
+    "quantity": 48,
+    "lastCounted": "2026-11-11"
+  },
+  {
+    "bin": "A-02-1",
+    "sku": "FX-BLT-M8",
+    "quantity": 30,
+    "lastCounted": "2026-11-11"
+  },
+  {
+    "bin": "A-02-2",
+    "sku": "FX-HNG-BRS",
+    "quantity": 95,
+    "lastCounted": "2026-11-07"
+  },
+  {
+    "bin": "A-02-3",
+    "sku": "FX-HNG-BRS",
+    "quantity": 20,
+    "lastCounted": "2026-11-07"
+  },
+  {
+    "bin": "A-03-1",
+    "sku": "FX-PAD-FLT",
+    "quantity": 60,
+    "lastCounted": "2026-11-13"
+  },
+  {
+    "bin": "A-03-2",
+    "sku": "CN-SND-120",
+    "quantity": 90,
+    "lastCounted": "2026-11-13"
+  },
+  {
+    "bin": "A-03-3",
+    "sku": "CN-SND-120",
+    "quantity": 40,
+    "lastCounted": "2026-11-07"
+  },
+  {
+    "bin": "A-04-1",
+    "sku": "CN-GLU-1L",
+    "quantity": 55,
+    "lastCounted": "2026-11-11"
+  },
+  {
+    "bin": "A-04-2",
+    "sku": "FX-DWL-08",
+    "quantity": 110,
+    "lastCounted": "2026-11-07"
+  },
+  {
+    "bin": "A-04-2",
+    "sku": "CN-OIL-1L",
+    "quantity": 12,
+    "lastCounted": "2026-11-13"
+  },
+  {
+    "bin": "A-04-3",
+    "sku": "CN-OIL-1L",
+    "quantity": 35,
+    "lastCounted": "2026-11-14"
+  },
+  {
+    "bin": "A-05-2",
+    "sku": "FX-KEY-ALN",
+    "quantity": 51,
+    "lastCounted": "2026-11-11"
+  },
+  {
+    "bin": "A-05-3",
+    "sku": "FX-PLT-BRS",
+    "quantity": 18,
+    "lastCounted": "2026-11-12"
+  },
+  {
+    "bin": "B-01-1",
+    "sku": "CP-LEG-BEN",
+    "quantity": 40,
+    "lastCounted": "2026-11-13"
+  },
+  {
+    "bin": "B-01-2",
+    "sku": "CP-LEG-BEN",
+    "quantity": 14,
+    "lastCounted": "2026-11-14"
+  },
+  {
+    "bin": "B-01-3",
+    "sku": "CP-LEG-TBL",
+    "quantity": 58,
+    "lastCounted": "2026-11-07"
+  },
+  {
+    "bin": "B-02-1",
+    "sku": "CP-BRK-STL",
+    "quantity": 25,
+    "lastCounted": "2026-11-14"
+  },
+  {
+    "bin": "B-02-2",
+    "sku": "CP-BRK-STL",
+    "quantity": 22,
+    "lastCounted": "2026-11-07"
+  },
+  {
+    "bin": "B-02-3",
+    "sku": "CP-SLT-SET",
+    "quantity": 30,
+    "lastCounted": "2026-11-11"
+  },
+  {
+    "bin": "B-03-1",
+    "sku": "CP-CUS-SAG",
+    "quantity": 9,
+    "lastCounted": "2026-11-11"
+  },
+  {
+    "bin": "B-03-2",
+    "sku": "CP-CUS-CHA",
+    "quantity": 66,
+    "lastCounted": "2026-11-07"
+  },
+  {
+    "bin": "C-01-1",
+    "sku": "FG-BEN-2S",
+    "quantity": 24,
+    "lastCounted": "2026-11-13"
+  },
+  {
+    "bin": "C-01-2",
+    "sku": "FG-BEN-2S",
+    "quantity": 5,
+    "lastCounted": "2026-11-07"
+  },
+  {
+    "bin": "C-02-1",
+    "sku": "FG-BEN-3S",
+    "quantity": 18,
+    "lastCounted": "2026-11-14"
+  },
+  {
+    "bin": "C-02-2",
+    "sku": "FG-TBL-BIS",
+    "quantity": 12,
+    "lastCounted": "2026-11-07"
+  },
+  {
+    "bin": "C-03-1",
+    "sku": "FG-CHR-FLD",
+    "quantity": 20,
+    "lastCounted": "2026-11-14"
+  },
+  {
+    "bin": "C-03-2",
+    "sku": "FG-PLN-LRG",
+    "quantity": 7,
+    "lastCounted": "2026-11-14"
+  },
+  {
+    "bin": "BULK-01",
+    "sku": "PK-CTN-BEN",
+    "quantity": 180,
+    "lastCounted": "2026-11-14"
+  },
+  {
+    "bin": "BULK-02",
+    "sku": "PK-CTN-BEN",
+    "quantity": 90,
+    "lastCounted": "2026-11-13"
+  },
+  {
+    "bin": "BULK-03",
+    "sku": "RM-OAK-24",
+    "quantity": 240,
+    "lastCounted": "2026-11-13"
+  },
+  {
+    "bin": "BULK-04",
+    "sku": "PK-BUB-ROL",
+    "quantity": 150,
+    "lastCounted": "2026-11-07"
+  }
+]

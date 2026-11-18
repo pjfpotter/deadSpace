@@ -4,12 +4,12 @@ Two-hour MVP, in time order. If running late, drop group 5 (floor checklist) bef
 
 ## 1. Scaffold, deploy early, privacy and ingest (0:00–0:20)
 
-- [ ] 1.1 Confirm the data is ignored: run `git check-ignore data/stock.csv`; verify it prints the path and `git status` shows no CSV or `data/` file
-- [ ] 1.2 Scaffold a Next.js App Router TypeScript project at the repo root with Vitest; verify `npm run dev` serves a page and `npm test` runs
-- [ ] 1.3 Deploy the empty app to Vercel now to catch deploy problems early; verify the public URL loads
-- [ ] 1.4 Define the model types (`Bin`, `Product`, `StockRow`, `IncomingLine`, `Move`, `Plan`, `Flag`) in `lib/model.ts`; verify the project type-checks
-- [ ] 1.5 Write `scripts/ingest.ts` that reads the raw CSVs in `data/`, keeps only needed columns (no names, mobiles, addresses, supplier contacts, unit cost), writes sanitised JSON to `fixtures/`, and generates `docs/data-minimisation.md` (kept/dropped/why); verify with a test that no fixture contains a personal field or the strings "Priory", "Castle Hill" or "07700"
-- [ ] 1.6 Run the privacy scan, then commit `fixtures/` and the minimisation doc; verify `git grep -nE "07700|@example\.com|Priory Close|Castle Hill" -- . ':!openspec' ':!README.md'` returns nothing
+- [x] 1.1 Confirm the data is ignored: run `git check-ignore data/stock.csv`; verify it prints the path and `git status` shows no CSV or `data/` file
+- [x] 1.2 Scaffold a Next.js App Router TypeScript project at the repo root with Vitest; verify `npm run dev` serves a page and `npm test` runs
+- [x] 1.3 Deploy the empty app to Vercel now to catch deploy problems early; verify the public URL loads
+- [x] 1.4 Define the model types (`Bin`, `Product`, `StockRow`, `IncomingLine`, `Move`, `Plan`, `Flag`) in `lib/model.ts`; verify the project type-checks
+- [x] 1.5 Write `scripts/ingest.ts` that reads the raw CSVs in `data/`, keeps only needed columns (no names, mobiles, addresses, supplier contacts, unit cost), writes sanitised JSON to `fixtures/`, and generates `docs/data-minimisation.md` (kept/dropped/why); verify with a test that no fixture contains a personal field or the strings "Priory", "Castle Hill" or "07700"
+- [x] 1.6 Run the privacy scan, then commit `fixtures/` and the minimisation doc; verify `git grep -nE "07700|@example\.com|Priory Close|Castle Hill" -- . ':!openspec' ':!README.md' ':!lib/fixtures.test.ts'` returns nothing (the privacy test holds the forbidden strings as patterns on purpose)
 
 ## 2. Flags and fullness (0:20–0:35)
 
