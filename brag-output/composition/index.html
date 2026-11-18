@@ -1,0 +1,225 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=1920, height=1080" />
+<title>Fernbrook dead space</title>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+<style>
+@font-face { font-family: "Fraunces"; src: url("assets/fonts/Fraunces-400.woff2") format("woff2"); font-weight: 400; }
+@font-face { font-family: "Instrument Sans"; src: url("assets/fonts/InstrumentSans-500.woff2") format("woff2"); font-weight: 400 700; }
+@font-face { font-family: "DM Mono"; src: url("assets/fonts/DMMono-400.woff2") format("woff2"); font-weight: 400; }
+:root { --fern:#2c4535; --linen:#f3eee4; --oak:#c9a074; --moss:#8aa574; --brook:#5f8a94; --brook-deep:#3f6770; --stone:#ddd5c6; --bark:#1f1b17; }
+* { box-sizing: border-box; }
+body { margin:0; background:var(--fern); font-family:"Instrument Sans",system-ui,sans-serif; color:var(--bark); }
+#root { position:relative; width:100%; height:100%; overflow:hidden; background:var(--fern); }
+.scene { position:absolute; inset:0; }
+.inner { position:absolute; inset:0; }
+.fern { background:var(--fern); color:var(--linen); }
+.lin { background:var(--linen); color:var(--bark); }
+.mono { font-family:"DM Mono",monospace; }
+.disp { font-family:"Fraunces",Georgia,serif; letter-spacing:-0.03em; font-variation-settings:"opsz" 144; font-weight:400; }
+
+/* hook */
+.center { position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+.big { position:relative; font-size:420px; line-height:1; margin:0; }
+.strike { position:absolute; left:-2%; right:-2%; top:56%; height:14px; background:var(--oak); transform-origin:left center; }
+.cap { margin-top:36px; font-family:"DM Mono",monospace; font-size:48px; color:var(--oak); height:64px; display:flex; }
+.ch { opacity:0; }
+
+/* app chrome */
+.hdr { position:absolute; left:0; right:0; top:0; height:112px; background:var(--fern); color:var(--linen); display:flex; align-items:center; justify-content:space-between; padding:0 80px; }
+.brand { display:flex; align-items:center; gap:22px; }
+.mk { height:64px; }
+.word { font-family:"Fraunces",Georgia,serif; font-size:44px; letter-spacing:-0.03em; }
+.stores { font-family:"DM Mono",monospace; font-size:28px; letter-spacing:0.18em; border-left:2px solid rgba(243,238,228,.35); padding-left:20px; opacity:.85; }
+nav { display:flex; gap:6px; }
+.nav { font-size:24px; font-weight:600; padding:38px 18px 32px; color:rgba(243,238,228,.82); border-bottom:5px solid transparent; }
+.nav.on { color:var(--linen); border-bottom-color:var(--oak); }
+.page { position:absolute; left:110px; right:110px; top:170px; bottom:70px; }
+h2 { font-size:64px; margin:0 0 6px; font-family:"Fraunces",Georgia,serif; letter-spacing:-0.03em; font-weight:400; }
+.sub { font-size:28px; color:#5a5249; margin:0 0 40px; }
+
+/* fullness */
+.cards { display:grid; grid-template-columns:repeat(4,1fr); gap:28px; }
+.card { border:2px solid var(--stone); border-radius:18px; padding:34px 32px 36px; background:var(--linen); }
+.ct { display:flex; justify-content:space-between; align-items:baseline; }
+.ct h3 { margin:0; font-size:34px; font-weight:600; }
+.pc { margin:0; font-size:84px; font-weight:600; font-variant-numeric:tabular-nums; font-family:"Fraunces",Georgia,serif; letter-spacing:-0.03em; }
+.track { margin-top:28px; height:26px; border-radius:13px; background:var(--stone); overflow:hidden; }
+.fill { height:100%; width:0; border-radius:13px; background:var(--fern); }
+.stats { display:flex; gap:28px; margin-top:44px; }
+.chip { background:var(--fern); color:var(--linen); border-radius:18px; padding:26px 38px; font-size:36px; }
+.chip b { font-family:"Fraunces",Georgia,serif; font-size:72px; font-weight:400; margin-right:16px; vertical-align:-6px; }
+.chip.oak { background:var(--oak); color:var(--bark); }
+
+/* rows */
+.split { display:flex; gap:44px; align-items:flex-start; }
+.list { flex:1; display:flex; flex-direction:column; gap:16px; }
+.row { display:grid; grid-template-columns:1fr 330px 270px; align-items:center; gap:20px; background:#fbf8f2; border:2px solid var(--stone); border-radius:16px; padding:22px 30px; font-size:30px; }
+.row.d { grid-template-columns:160px 1fr 330px 52px; }
+.prod { font-weight:600; }
+.q { font-family:"DM Mono",monospace; font-weight:400; margin-left:14px; color:var(--brook-deep); }
+.mv { font-size:28px; }
+.mv b { color:#8a6a3f; font-weight:400; margin:0 6px; }
+.frees { font-size:26px; color:var(--fern); background:rgba(138,165,116,.35); border-radius:999px; padding:8px 18px; text-align:center; }
+.ref { font-size:26px; color:var(--brook-deep); }
+.ckw { width:52px; height:52px; }
+.ck { width:52px; height:52px; display:block; }
+.tile { width:470px; background:var(--fern); color:var(--linen); border-radius:22px; padding:40px 44px; }
+.tile .lab { font-size:28px; opacity:.85; }
+.tile .num { font-family:"Fraunces",Georgia,serif; font-size:230px; line-height:1; letter-spacing:-0.04em; margin:6px 0 4px; }
+.tile .note { font-size:26px; color:var(--oak); }
+
+/* outro */
+.lock { display:flex; align-items:center; gap:34px; }
+.lock img { height:150px; }
+.lock .w { font-size:120px; }
+.line { font-size:84px; margin:56px 0 0; }
+.tag { margin-top:34px; font-family:"DM Mono",monospace; font-size:30px; letter-spacing:0.18em; text-transform:uppercase; color:var(--oak); }
+</style>
+</head>
+<body>
+<div id="root" data-composition-id="main" data-start="0" data-width="1920" data-height="1080" data-duration="23">
+
+  <!-- Scene 1: hook -->
+  <section id="s1" class="clip scene" data-start="0" data-duration="4.0">
+    <div class="inner fern" id="s1i">
+      <div class="center">
+        <h1 class="big disp" id="full">Full.<span class="strike" id="strike"></span></h1>
+        <div class="cap" id="cap" aria-label="the stores, apparently"><span class="ch">t</span><span class="ch">h</span><span class="ch">e</span><span class="ch">&nbsp;</span><span class="ch">s</span><span class="ch">t</span><span class="ch">o</span><span class="ch">r</span><span class="ch">e</span><span class="ch">s</span><span class="ch">,</span><span class="ch">&nbsp;</span><span class="ch">a</span><span class="ch">p</span><span class="ch">p</span><span class="ch">a</span><span class="ch">r</span><span class="ch">e</span><span class="ch">n</span><span class="ch">t</span><span class="ch">l</span><span class="ch">y</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 2: the receipts -->
+  <section id="s2" class="clip scene" data-start="4.0" data-duration="5.5">
+    <div class="inner lin" id="s2i">
+      <header class="hdr"><div class="brand"><img src="assets/logo-mark-fern-linen.svg" alt="" class="mk"><span class="word">Fernbrook</span><span class="stores">STORES</span></div><nav><span class="nav on">How full</span><span class="nav">Merges</span><span class="nav">Deliveries</span><span class="nav">Can we fit it?</span><span class="nav">December orders</span><span class="nav">Floor checklist</span></nav></header>
+      <div class="page">
+        <h2>How full the stores are</h2>
+        <p class="sub">From the latest stock count. Capacity is counted in units.</p>
+        <div class="cards"><div class="card" id="card0"><div class="ct"><h3>Small</h3><p class="pc">43%</p></div><div class="track"><div class="fill" id="fill0" data-w="43"></div></div></div><div class="card" id="card1"><div class="ct"><h3>Medium</h3><p class="pc">49%</p></div><div class="track"><div class="fill" id="fill1" data-w="49"></div></div></div><div class="card" id="card2"><div class="ct"><h3>Large</h3><p class="pc">48%</p></div><div class="track"><div class="fill" id="fill2" data-w="48"></div></div></div><div class="card" id="card3"><div class="ct"><h3>Bulk</h3><p class="pc">57%</p></div><div class="track"><div class="fill" id="fill3" data-w="57"></div></div></div></div>
+        <div class="stats" id="stats2">
+          <div class="chip oak"><b>2</b>empty bins</div>
+          <div class="chip"><b>34</b>bins in the stores</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 3: six moves -->
+  <section id="s3" class="clip scene" data-start="9.5" data-duration="6.0">
+    <div class="inner lin" id="s3i">
+      <header class="hdr"><div class="brand"><img src="assets/logo-mark-fern-linen.svg" alt="" class="mk"><span class="word">Fernbrook</span><span class="stores">STORES</span></div><nav><span class="nav">How full</span><span class="nav on">Merges</span><span class="nav">Deliveries</span><span class="nav">Can we fit it?</span><span class="nav">December orders</span><span class="nav">Floor checklist</span></nav></header>
+      <div class="page">
+        <h2>Merges: what moves, and which bins it frees</h2>
+        <p class="sub">Six moves. Each product keeps one bin.</p>
+        <div class="split">
+          <div class="list"><div class="row" id="mrow0"><div class="prod">Steel bracket set<span class="q">&times;22</span></div><div class="mv mono">B-02-2 <b>&rarr;</b> B-02-1</div><div class="frees mono">frees B-02-2</div></div><div class="row" id="mrow1"><div class="prod">Bench leg, oak<span class="q">&times;14</span></div><div class="mv mono">B-01-2 <b>&rarr;</b> B-01-1</div><div class="frees mono">frees B-01-2</div></div><div class="row" id="mrow2"><div class="prod">Garden bench, 2-seat<span class="q">&times;5</span></div><div class="mv mono">C-01-2 <b>&rarr;</b> C-01-1</div><div class="frees mono">frees C-01-2</div></div><div class="row" id="mrow3"><div class="prod">Coach bolts M8 (bag of 20)<span class="q">&times;30</span></div><div class="mv mono">A-02-1 <b>&rarr;</b> A-01-3</div><div class="frees mono">frees A-02-1</div></div><div class="row" id="mrow4"><div class="prod">Brass hinges (pair)<span class="q">&times;20</span></div><div class="mv mono">A-02-3 <b>&rarr;</b> A-02-2</div><div class="frees mono">frees A-02-3</div></div></div>
+          <div class="tile" id="tile"><div class="lab">Empty bins</div><div class="num" id="num">2</div><div class="note" id="note">now</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 4: deliveries -->
+  <section id="s4" class="clip scene" data-start="15.5" data-duration="4.3">
+    <div class="inner lin" id="s4i">
+      <header class="hdr"><div class="brand"><img src="assets/logo-mark-fern-linen.svg" alt="" class="mk"><span class="word">Fernbrook</span><span class="stores">STORES</span></div><nav><span class="nav">How full</span><span class="nav">Merges</span><span class="nav on">Deliveries</span><span class="nav">Can we fit it?</span><span class="nav">December orders</span><span class="nav">Floor checklist</span></nav></header>
+      <div class="page">
+        <h2>Deliveries</h2>
+        <p class="sub">Every delivery and production run, placed once.</p>
+        <div class="list"><div class="row d" id="drow0"><div class="ref mono">PO-4417</div><div class="prod">Exterior varnish 1L<span class="q">&times;96</span></div><div class="mv mono"><b>&rarr;</b> A-05-1</div><div class="ckw" id="ck0"><svg viewBox="0 0 40 40" class="ck"><circle cx="20" cy="20" r="18" fill="#8AA574"/><path d="M11 21l6 6 12-14" fill="none" stroke="#1F1B17" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="row d" id="drow1"><div class="ref mono">WO-1031</div><div class="prod">Armrest pair, oak<span class="q">&times;48</span></div><div class="mv mono"><b>&rarr;</b> B-03-3</div><div class="ckw" id="ck1"><svg viewBox="0 0 40 40" class="ck"><circle cx="20" cy="20" r="18" fill="#8AA574"/><path d="M11 21l6 6 12-14" fill="none" stroke="#1F1B17" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="row d" id="drow2"><div class="ref mono">PO-4419</div><div class="prod">Stainless screws 4x40mm<span class="q">&times;120</span></div><div class="mv mono"><b>&rarr;</b> A-01-1, A-01-2</div><div class="ckw" id="ck2"><svg viewBox="0 0 40 40" class="ck"><circle cx="20" cy="20" r="18" fill="#8AA574"/><path d="M11 21l6 6 12-14" fill="none" stroke="#1F1B17" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div><div class="row d" id="drow3"><div class="ref mono">WO-1033</div><div class="prod">Garden bench, 3-seat<span class="q">&times;30</span></div><div class="mv mono"><b>&rarr;</b> C-02-1, C-01-2</div><div class="ckw" id="ck3"><svg viewBox="0 0 40 40" class="ck"><circle cx="20" cy="20" r="18" fill="#8AA574"/><path d="M11 21l6 6 12-14" fill="none" stroke="#1F1B17" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div></div>
+        <div class="stats" id="stats4"><div class="chip"><b>6 of 6</b>placed</div><div class="chip oak"><b>3</b>bins spare</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Scene 5: outro -->
+  <section id="s5" class="clip scene" data-start="19.8" data-duration="3.2">
+    <div class="inner fern" id="s5i">
+      <div class="center">
+        <div class="lock" id="lock"><img src="assets/logo-mark-fern-linen.svg" alt="Fernbrook"><span class="w disp">Fernbrook</span></div>
+        <p class="line disp" id="line">No extra space needed.</p>
+        <div class="tag" id="tag">Made slowly. Made to stay.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Audio -->
+  <audio id="music" src="assets/music/happy-beats-business-moves-vol-10-by-ende-dot-app.mp3" data-start="0" data-duration="23" data-track-index="1" data-volume="1" data-automation='{"version":1,"lanes":[{"target":"volume","points":[{"t":0,"v":0},{"t":0.4,"v":0.3},{"t":0.5,"v":0.13},{"t":2.6,"v":0.13},{"t":2.9,"v":0.3},{"t":4.2,"v":0.3},{"t":4.4,"v":0.13},{"t":8.7,"v":0.13},{"t":9.0,"v":0.3},{"t":10.4,"v":0.3},{"t":10.6,"v":0.13},{"t":13.2,"v":0.13},{"t":13.5,"v":0.3},{"t":15.8,"v":0.3},{"t":16.0,"v":0.13},{"t":19.0,"v":0.13},{"t":19.3,"v":0.3},{"t":20.3,"v":0.3},{"t":20.5,"v":0.13},{"t":22.2,"v":0.13},{"t":22.4,"v":0.05},{"t":23,"v":0}]}]}'></audio>
+  <audio id="vo1" src="assets/vo1.wav" data-start="0.5" data-duration="2.1" data-track-index="3" data-volume="1"></audio>
+  <audio id="vo2" src="assets/vo2.wav" data-start="4.3" data-duration="4.4" data-track-index="4" data-volume="1"></audio>
+  <audio id="vo3" src="assets/vo3.wav" data-start="10.6" data-duration="2.6" data-track-index="5" data-volume="1"></audio>
+  <audio id="vo4" src="assets/vo4.wav" data-start="16.0" data-duration="3.0" data-track-index="6" data-volume="1"></audio>
+  <audio id="vo5" src="assets/vo5.wav" data-start="20.5" data-duration="1.7" data-track-index="7" data-volume="1"></audio>
+    <audio id="sfx0" src="assets/sfx/impactSoft_medium_001.ogg" data-start="1.4" data-duration="0.6" data-track-index="20" data-volume="0.6"></audio>
+    <audio id="sfx1" src="assets/sfx/click2.ogg" data-start="4.7" data-duration="0.6" data-track-index="21" data-volume="0.7"></audio>
+    <audio id="sfx2" src="assets/sfx/click2.ogg" data-start="5.8" data-duration="0.6" data-track-index="22" data-volume="0.7"></audio>
+    <audio id="sfx3" src="assets/sfx/click2.ogg" data-start="6.9" data-duration="0.6" data-track-index="23" data-volume="0.7"></audio>
+    <audio id="sfx4" src="assets/sfx/click2.ogg" data-start="8.0" data-duration="0.6" data-track-index="24" data-volume="0.7"></audio>
+    <audio id="sfx5" src="assets/sfx/click2.ogg" data-start="10.3" data-duration="0.6" data-track-index="25" data-volume="0.7"></audio>
+    <audio id="sfx6" src="assets/sfx/click2.ogg" data-start="10.85" data-duration="0.6" data-track-index="26" data-volume="0.7"></audio>
+    <audio id="sfx7" src="assets/sfx/click2.ogg" data-start="11.4" data-duration="0.6" data-track-index="27" data-volume="0.7"></audio>
+    <audio id="sfx8" src="assets/sfx/click2.ogg" data-start="11.95" data-duration="0.6" data-track-index="28" data-volume="0.7"></audio>
+    <audio id="sfx9" src="assets/sfx/click2.ogg" data-start="12.5" data-duration="0.6" data-track-index="29" data-volume="0.7"></audio>
+    <audio id="sfx10" src="assets/sfx/impactSoft_medium_001.ogg" data-start="14.2" data-duration="0.6" data-track-index="30" data-volume="0.6"></audio>
+    <audio id="sfx11" src="assets/sfx/click2.ogg" data-start="16.4" data-duration="0.6" data-track-index="31" data-volume="0.6"></audio>
+    <audio id="sfx12" src="assets/sfx/click2.ogg" data-start="17.0" data-duration="0.6" data-track-index="32" data-volume="0.6"></audio>
+    <audio id="sfx13" src="assets/sfx/click2.ogg" data-start="17.6" data-duration="0.6" data-track-index="33" data-volume="0.6"></audio>
+    <audio id="sfx14" src="assets/sfx/click2.ogg" data-start="18.2" data-duration="0.6" data-track-index="34" data-volume="0.6"></audio>
+    <audio id="sfx15" src="assets/sfx/bong_001.ogg" data-start="18.95" data-duration="0.6" data-track-index="35" data-volume="0.5"></audio>
+    <audio id="sfx16" src="assets/sfx/bong_001.ogg" data-start="20.19" data-duration="0.6" data-track-index="36" data-volume="0.6"></audio>
+</div>
+
+<script>
+const tl = gsap.timeline({ paused: true });
+const ease = "power3.out";
+
+// every scene fades its content in and out (scene backgrounds live on .inner)
+[["s1i",0,4.0],["s2i",4.0,5.5],["s3i",9.5,6.0],["s4i",15.5,4.3],["s5i",19.8,3.2]].forEach(([id,st,d]) => {
+  if (id !== "s1i") tl.fromTo("#"+id, {opacity:0}, {opacity:1, duration:0.35, ease:"power1.out"}, st);
+  if (id !== "s5i") tl.to("#"+id, {opacity:0, duration:0.3, ease:"power1.in"}, st + d - 0.3);
+});
+
+// Scene 1: hook
+tl.from("#full", { y: 40, duration: 0.7, ease }, 0);
+tl.fromTo("#strike", { scaleX: 0 }, { scaleX: 1, duration: 0.45, ease: "power2.inOut" }, 1.4); // sfx: impact @1.4
+document.querySelectorAll("#cap .ch").forEach((el, i) => tl.set(el, { opacity: 1 }, 1.85 + i * 0.045));
+
+// Scene 2: cards one by one, ~1.1s apart; bars fill
+[4.7, 5.8, 6.9, 8.0].forEach((t, i) => {
+  tl.from("#card" + i, { y: 40, opacity: 0, duration: 0.5, ease }, t - 0.15);
+  tl.to("#fill" + i, { width: document.getElementById("fill" + i).dataset.w + "%", duration: 0.8, ease: "power2.out" }, t);
+});
+tl.from("#stats2", { y: 30, opacity: 0, duration: 0.5, ease }, 7.6);
+
+// Scene 3: merge rows (0.55s apart = every beat), counter 2 -> 7, then hold
+[10.3, 10.85, 11.4, 11.95, 12.5].forEach((t, i) => {
+  tl.from("#mrow" + i, { x: -60, opacity: 0, duration: 0.45, ease }, t - 0.1);
+});
+tl.from("#tile", { x: 60, opacity: 0, duration: 0.6, ease }, 10.3);
+const c = { v: 2 };
+// beat-locked: counter lands on 7 at 14.20s
+tl.to(c, { v: 7, duration: 1.2, ease: "power1.inOut", onUpdate: () => { document.getElementById("num").textContent = Math.round(c.v); } }, 13.0);
+tl.set("#note", { textContent: "after the merges" }, 13.0);
+tl.fromTo("#tile", { scale: 1 }, { scale: 1.04, duration: 0.25, yoyo: true, repeat: 1, ease: "power2.out", transformOrigin: "50% 50%" }, 14.2);
+
+// Scene 4: deliveries tick down
+[16.15, 16.75, 17.35, 17.95].forEach((t, i) => {
+  tl.from("#drow" + i, { x: -60, opacity: 0, duration: 0.45, ease }, t - 0.2);
+  tl.from("#ck" + i, { scale: 0, opacity: 0, duration: 0.3, ease: "back.out(2)", transformOrigin: "50% 50%" }, t + 0.25);
+});
+tl.from("#stats4", { y: 30, opacity: 0, duration: 0.5, ease }, 18.1);
+
+// Scene 5: outro, logo beat-locked to 20.19s
+tl.from("#lock", { y: 40, opacity: 0, scale: 0.94, duration: 0.7, ease, transformOrigin: "50% 50%" }, 19.95);
+tl.from("#line", { y: 30, opacity: 0, duration: 0.6, ease }, 20.4);
+tl.from("#tag", { opacity: 0, y: 16, duration: 0.5, ease }, 20.85);
+tl.to("#s5i", { opacity: 0, duration: 0.25, ease: "power1.in" }, 22.75);
+
+window.__timelines["main"] = tl;
+</script>
+</body>
+</html>
