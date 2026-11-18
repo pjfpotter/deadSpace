@@ -30,7 +30,7 @@ The system SHALL accept a product and a whole-number quantity greater than zero 
 - **THEN** the result says it fits and lists each bin with its share, filling bins that already hold the product before using empty bins
 
 ### Requirement: The check follows the store rules
-The system SHALL count only room allowed by the store rules: same-product bins with spare capacity and empty bins of the right size class, excluding flagged bins. A bin of unknown capacity, a mixed bin and a bin locked by a stale count SHALL NOT be counted as room.
+The system SHALL count only room allowed by the store rules: same-product bins with spare capacity and empty bins of the right size class, excluding flagged bins. A bin of unknown capacity, an over-capacity bin and a mixed bin SHALL NOT be counted as room. A bin with only a stale count is still counted, as in the plan, because stale counts are flagged only.
 
 #### Scenario: Wrong size class ignored
 - **GIVEN** empty bins exist only in other size classes

@@ -43,10 +43,10 @@ Two-hour MVP, in time order. If running late, drop group 5 (floor checklist) bef
 
 ## 7. Fit check (only if groups 1-6 are done, about 25 minutes)
 
-- [ ] 7.1 Implement `lib/fit.ts` (`checkFit`: input validation, spare room per bin, same-product bins before empty bins, size-class match, flagged bins excluded and reported, shortfall) with tests for each spec scenario; verify an unknown SKU, quantity 0 and 2.5 return errors and an oversized quantity returns the right `short`
-- [ ] 7.2 Add the "after merges" state from `stockAfter(data, plan.steps)` and name the freeing merge for any bin in `plan.freedBins`; verify a quantity that fits only after merges reports the merge, and an over-capacity bin counts zero room
-- [ ] 7.3 Build `app/fit/page.tsx` and a Nav link: product select, quantity input, two result cards (now, after merges) listing bins and units, behind `PlanGuard`; verify it renders on the real data, withholds "after merges" for a broken plan, and fits at 360px
-- [ ] 7.4 Hand-check three answers against the store rules (one fits now, one only after merges, one short) and add them to `docs/hand-check.md`; verify the note lists product, quantity and result
+- [x] 7.1 Implement `lib/fit.ts` (`checkFit`: input validation, spare room per bin, same-product bins before empty bins, size-class match, flagged bins excluded and reported, shortfall) with tests for each spec scenario; verify an unknown SKU, quantity 0 and 2.5 return errors and an oversized quantity returns the right `short`
+- [x] 7.2 Add the "after merges" state from `stockAfter(data, plan.steps)` and name the freeing merge for any bin in `plan.freedBins`; verify a quantity that fits only after merges reports the merge, and an over-capacity bin counts zero room
+- [x] 7.3 Build `app/fit/page.tsx` and a Nav link: product select, quantity input, two result cards (now, after merges) listing bins and units, behind `PlanGuard`; verify it renders on the real data, withholds "after merges" for a broken plan, and fits at 360px
+- [x] 7.4 Hand-check three answers against the store rules (one fits now, one only after merges, one short) and add them to `docs/hand-check.md`; verify the note lists product, quantity and result
 
 ## Later (not in the two-hour MVP)
 
