@@ -31,8 +31,8 @@ Two-hour MVP, in time order. If running late, drop group 5 (floor checklist) bef
 
 ## 5. Floor checklist (1:20–1:35, cut first if late)
 
-- [ ] 5.1 Build the floor view: ordered steps with template instructions (product, quantity, from bin, to bin), tick and undo, progress count, `localStorage` keyed by a plan hash, and a safe fallback if storage is blocked; verify ticks survive a reload and a blocked-storage run shows the list with nothing ticked
-- [ ] 5.2 Check the floor view at 360px width; verify no horizontal scroll and that every step is tappable
+- [x] 5.1 Build the floor view: ordered steps with template instructions (product, quantity, from bin, to bin), tick and undo, progress count, `localStorage` keyed by a plan hash, and a safe fallback if storage is blocked; verify ticks survive a reload and a blocked-storage run shows the list with nothing ticked
+- [x] 5.2 Check the floor view at 360px width; verify no horizontal scroll and that every step is tappable
 
 ## 6. Ship and pitch support (1:35–2:00)
 
