@@ -1,0 +1,15 @@
+# Raw and sanitised data is treated as secret: never commit
+data/
+*.csv
+
+# Env and secrets
+.env
+.env*
+
+# Dependencies and build
+node_modules/
+.next/
+.vercel/
+
+# OS / editor
+.DS_Store
