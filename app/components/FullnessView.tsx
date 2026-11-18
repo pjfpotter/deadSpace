@@ -129,13 +129,13 @@ function Stat({
     <div
       className={
         primary
-          ? "rounded-md bg-header p-4 text-white"
+          ? "rounded-md bg-header p-4 text-on-header"
           : "rounded-md border border-line bg-surface p-4"
       }
     >
-      <p className={`text-sm ${primary ? "text-white/70" : "text-muted"}`}>{label}</p>
-      <p className="mt-1 text-4xl font-extrabold tabular-nums">{value}</p>
-      <p className={`mt-1 text-xs ${primary ? "text-white/70" : "text-muted"}`}>{note}</p>
+      <p className={`text-sm ${primary ? "text-on-header/80" : "text-muted"}`}>{label}</p>
+      <p className="mt-1 font-display text-4xl tabular-nums">{value}</p>
+      <p className={`mt-1 text-xs ${primary ? "text-on-header/80" : "text-muted"}`}>{note}</p>
     </div>
   );
 }

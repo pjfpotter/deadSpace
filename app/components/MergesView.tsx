@@ -103,7 +103,7 @@ function Stat({ label, value, note }: { label: string; value: number; note?: str
   return (
     <div className="rounded-lg border border-line bg-surface p-4">
       <p className="text-sm text-muted">{label}</p>
-      <p className="mt-1 text-3xl font-semibold tabular-nums">{value}</p>
+      <p className="mt-1 font-display text-3xl tabular-nums">{value}</p>
       {note && <p className="mt-1 text-xs text-muted">{note}</p>}
     </div>
   );

@@ -1,46 +1,74 @@
 @import "tailwindcss";
 
-/* Colour tokens. Brand: change the values here and the whole app follows. See public/brand/README.md. */
+/*
+  Fernbrook brand tokens: the ONLY place colour values are written.
+  Everything below this block refers to these eight by name.
+  Source: docs/brand-handoff.md. Contrast rules are tested in lib/brand.test.ts.
+  Brook is for fills only; use brook-deep when text needs that colour.
+*/
 :root {
-  --background: #f4f6f4;
-  --foreground: #14201b;
-  --surface: #ffffff;
-  --line: #d9ddd8;
-  --muted: #5c6862;
-  --brand: #14372b;
-  --brand-contrast: #ffffff;
-  --accent: #b8863b;
-  --header-bg: #14372b;
-  --ok: #2f7d4a;
-  --warn: #9a5a08;
-  --bad: #b3261e;
-  --bar-track: #e3e8e4;
+  --fern: #2c4535;
+  --linen: #f3eee4;
+  --oak: #c9a074;
+  --moss: #8aa574;
+  --brook: #5f8a94;
+  --brook-deep: #3f6770;
+  --stone: #ddd5c6;
+  --bark: #1f1b17;
+}
+
+/* Semantic colours used by the components, built only from the tokens above. */
+:root {
+  --background: var(--linen);
+  --foreground: var(--bark);
+  --surface: var(--linen);
+  --line: var(--stone);
+  --muted: color-mix(in srgb, var(--bark) 72%, var(--linen));
+  --brand: var(--fern);
+  --brand-contrast: var(--linen);
+  --accent: var(--oak);
+  --header-bg: var(--fern);
+  --on-header: var(--linen);
+  --ok: var(--fern);
+  --warn: var(--brook-deep);
+  --bad: var(--bark);
+  --bar-track: var(--stone);
 }
 
 :root:not([data-theme="light"]) {
   color-scheme: light;
 }
 
+/* The handoff has no dark palette, so dark mode swaps the same tokens round. */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --background: #0f1512;
-    --foreground: #e8eeea;
-    --surface: #17201b;
-    --line: #2b3830;
-    --muted: #9fada5;
-    --brand: #7fbf8e;
-    --brand-contrast: #0b1a12;
-    --accent: #d4a24f;
-    --header-bg: #0a1d15;
-    --ok: #6fcf8d;
-    --warn: #e0a24d;
-    --bad: #f08a82;
-    --bar-track: #26332b;
+    --background: var(--fern);
+    --foreground: var(--linen);
+    --surface: var(--bark);
+    --line: color-mix(in srgb, var(--linen) 28%, var(--fern));
+    --muted: color-mix(in srgb, var(--linen) 78%, var(--fern));
+    --brand: var(--oak);
+    --brand-contrast: var(--bark);
+    --accent: var(--oak);
+    --header-bg: var(--bark);
+    --on-header: var(--linen);
+    --ok: var(--linen);
+    --warn: var(--linen);
+    --bad: var(--linen);
+    --bar-track: color-mix(in srgb, var(--linen) 18%, var(--fern));
     color-scheme: dark;
   }
 }
 
 @theme inline {
+  --color-fern: var(--fern);
+  --color-linen: var(--linen);
+  --color-oak: var(--oak);
+  --color-moss: var(--moss);
+  --color-brook: var(--brook);
+  --color-brook-deep: var(--brook-deep);
+  --color-stone: var(--stone);
+  --color-bark: var(--bark);
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-surface: var(--surface);
@@ -50,27 +78,54 @@
   --color-brand-contrast: var(--brand-contrast);
   --color-accent: var(--accent);
   --color-header: var(--header-bg);
+  --color-on-header: var(--on-header);
   --color-ok: var(--ok);
   --color-warn: var(--warn);
   --color-bad: var(--bad);
   --color-track: var(--bar-track);
-  --font-sans: var(--font-manrope);
-  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+  --font-sans: var(--font-instrument-sans), system-ui, sans-serif;
+  --font-display: var(--font-fraunces), Georgia, serif;
+  --font-mono: var(--font-dm-mono), ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 
+/* Type: Instrument Sans body 16px / 1.6, Fraunces display, DM Mono for codes only. */
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-manrope), system-ui, sans-serif;
+  font-family: var(--font-sans);
+  font-size: 1rem;
+  line-height: 1.6;
 }
 
 h1,
 h2,
-h3 {
-  letter-spacing: -0.015em;
+h3,
+h4,
+.font-display {
+  font-family: var(--font-display);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+h1,
+h2,
+.font-display {
+  font-variation-settings: "opsz" 144;
+}
+
+.font-mono {
+  font-weight: 400;
+}
+
+/* Small uppercase detail labels: DM Mono 12-14px, wide tracking. */
+.label {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
 }
 
 :focus-visible {
-  outline: 2px solid var(--accent);
+  outline: 2px solid var(--foreground);
   outline-offset: 2px;
 }
