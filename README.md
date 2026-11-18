@@ -1,4 +1,8 @@
+<img src="public/brand/logo-mark-fern.svg" alt="Fernbrook" height="72">
+
 # Fernbrook dead space
+
+*Made slowly. Made to stay.*
 
 A hackathon project for the 1066 Manufacturing Hackathon (18 Nov 2026). Fernbrook Furniture Co. says its stores are "full", yet most bins are about half empty and next week's deliveries won't fit. We're building a web app that shows how full the stores really are, lists the bin merges that free space, and plans where every incoming delivery goes.
 
@@ -33,7 +37,7 @@ Don't commit to this repo. Send your work to the developer, who adds it. It land
 
 - Business case: `docs/business-case.md`
 - AI mistakes and test findings: `docs/ai-error-log.md`
-- Brand assets (logo, colours, fonts): `public/brand/`
+- Brand assets (logo, colours, fonts): `public/brand/`; tokens live in `app/globals.css`; handoff in [docs/brand-handoff.md](docs/brand-handoff.md)
 - Pitch slides and demo script: `docs/`
 
 ## The data is secret
