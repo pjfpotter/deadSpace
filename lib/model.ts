@@ -36,6 +36,15 @@ export interface IncomingLine {
   quantity: number;
 }
 
+/** A customer order leaving the stores (outbound demand). */
+export interface Order {
+  orderRef: string; // e.g. "CO-8801"
+  customerLabel: string; // pseudonymous label only, e.g. "Customer 14"
+  deliveryDate: string; // ISO date
+  sku: string;
+  quantity: number;
+}
+
 /** The sanitised store data the whole app plans from. */
 export interface StoreData {
   bins: Bin[];

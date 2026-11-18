@@ -27,6 +27,11 @@ For each date and size class the system SHALL compute, for every product, `ceil(
 - **WHEN** bins needed are computed for 2026-12-03
 - **THEN** Large needs 8 bins (2S 3, 3S 2, table 1, chair 1, planter 1) against 6 available, and the page states the shortfall of 2 bins
 
+#### Scenario: Large is back within its bins once the first two orders leave
+- **GIVEN** the default assumptions
+- **WHEN** CO-8801 and CO-8802 leave on 2026-12-03 and, later, CO-8803 leaves on 2026-12-10
+- **THEN** Large needs 6 bins of 6 after the first two leave, and 5 of 6 after CO-8803 leaves
+
 #### Scenario: Other classes unaffected
 - **GIVEN** the same projection
 - **WHEN** Small, Medium and Bulk are computed

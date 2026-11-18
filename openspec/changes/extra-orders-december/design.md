@@ -16,7 +16,8 @@ Hand-worked expected results (the tests are written against these; they are our 
 | 3 Dec (benches land) | 69 → 3 | 48 → 2 | 1 | 1 | 1 | **8 of 6, short 2** |
 | after 3S dispatched early (before benches) | 69 → 3 | 24 → 1 | 1 | 1 | 1 | 7 of 6, short 1 |
 | plus benches split or cross-docked (hold ≤ 60 so 2S needs ≤ 2 bins) | 2 | 1 | 1 | 1 | 1 | 6 of 6, fits |
-| 4 Dec after CO-8801/8802 leave | 29 → 1 | 24 → 1 | 1 | 4 → 1 | 1 | 5 of 6 |
+| 3 Dec after CO-8801/8802 leave (default lead of 1 day) | 29 → 1 | 48 → 2 | 1 | 4 → 1 | 1 | 6 of 6 |
+| 10 Dec after CO-8803 leaves | 29 → 1 | 24 → 1 | 1 | 4 → 1 | 1 | 5 of 6 |
 
 Unit check: 69 + 48 + 12 + 20 + 7 = 156 units against 180 capacity, so the problem is bins (one product per bin), not total units. The folding chairs need 1 bin even at 4 units. This is the point to make in the pitch.
 

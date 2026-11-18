@@ -4,6 +4,7 @@ import { execSync } from "node:child_process";
 import { readFileSync } from "node:fs";
 import path from "node:path";
 import { describe, expect, it } from "vitest";
+import { parseCsv } from "./csv";
 import type { Move, Plan, Step, StoreData } from "./model";
 import { loadTicks, planHash, progressKey, type MinimalStorage } from "./progress";
 import { solveGreedy } from "./solve-greedy";
@@ -183,7 +184,16 @@ describe("review 1: data minimisation is an allow-list, not a deny-list", () => 
 
   it("no raw CSV or data/ file is tracked by git", () => {
     const tracked = execSync("git ls-files", { cwd: path.resolve(__dirname, "..") }).toString().split("\n");
-    expect(tracked.filter((f) => f.endsWith(".csv") || f.startsWith("data/"))).toEqual([]);
+    // One exception: the organiser's late customer orders (docs/spec-update), which hold only
+    // order refs, pseudonymous "Customer NN" labels, dates, SKUs and quantities (checked below).
+    const allowed = new Set(["docs/spec-update/warehouse_extra_orders.csv"]);
+    expect(tracked.filter((f) => (f.endsWith(".csv") && !allowed.has(f)) || f.startsWith("data/"))).toEqual([]);
+  });
+
+  it("the one committed CSV has only the expected columns and pseudonymous customer labels", () => {
+    const raw = readFileSync(path.resolve(__dirname, "..", "docs", "spec-update", "warehouse_extra_orders.csv"), "utf8");
+    expect(raw.split(/\r?\n/, 1)[0]).toBe("order_ref,customer,delivery_date,sku,quantity");
+    for (const row of parseCsv(raw)) expect(row.customer).toMatch(/^Customer \d+$/);
   });
 });
 

@@ -1,8 +1,9 @@
 import binsJson from "@/fixtures/bins.json";
 import incomingJson from "@/fixtures/incoming.json";
+import ordersJson from "@/fixtures/orders.json";
 import productsJson from "@/fixtures/products.json";
 import stockJson from "@/fixtures/stock.json";
-import type { Bin, StockRow, StoreData } from "./model";
+import type { Bin, Order, StockRow, StoreData } from "./model";
 
 /** Sanitised store data, as written by scripts/ingest.ts. */
 export function loadStore(): StoreData {
@@ -12,6 +13,11 @@ export function loadStore(): StoreData {
     stock: stockJson as StoreData["stock"],
     incoming: incomingJson as StoreData["incoming"],
   };
+}
+
+/** Late customer orders (outbound), as written by scripts/ingest-orders.ts. */
+export function loadOrders(): Order[] {
+  return ordersJson as Order[];
 }
 
 /** Stock rows grouped by bin code. */
